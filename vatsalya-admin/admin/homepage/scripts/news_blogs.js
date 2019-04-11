@@ -51,15 +51,15 @@ function btnWriteNews(){
             console.log('Looks like there was a problem. Status Code: ' +
               response.status);
             return;
-          }
-    
-          // Examine the text in the response
+          }    
+         
           // upon successful completion of request
           response.json().then(function(data) {
             console.log("Added Successfully: "+data);
             // write code to do next
             // pop up the successful message
-            //clear the input fields
+            // clear the input fields
+            // what else do we have to do
             
           });
         }
