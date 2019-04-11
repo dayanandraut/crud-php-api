@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+    <!-- summer note -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="./scripts/news_blogs.js"></script>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Admin</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Gallery Directory</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Banner Images</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Common files</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">News</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Blogs</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Testimonials</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Environment Data</a>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">
+                    Menu
+                </button>
+            </nav>
+
+            <!-- testimonials (show data) -->
+            <div class="container testimonials-container" style="display: none;">
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header">
+                        testimonial one
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. subhash singh</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-outline-info ">Edit</a>
+                        <a href="#" class="btn btn-outline-info ">Delete</a>
+                    </div>
+                </div>
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-body text-center">
+                        <a href="#" class="btn btn-outline-info " style="border-radius: 50%;"> + </a>
+                    </div>
+                </div>
+            </div>
+            <!-- testimonials (add data) -->
+            <div class="container testimonials-container" style="display: none;">
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header text-center">
+                        Add New Testimonial
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Providers Name</label>
+                                <input type="text" class="form-control" placeholder="john smith">
+                            </div>
+                            <div class="form-group">
+                                <label>Testimonial</label>
+                                <textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info">Add +</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- view blogs/news -->
+            <div class="container blogs-container" style="display:none;">
+                <div class="card" style="max-width: 800px; margin: 10px;">
+                    <div class="card-body text-center">
+                        <a href="#" class="btn btn-outline-info " style="border-radius: 50%;"> + </a>
+                        <!-- <p>New Blog</p> -->
+                    </div>
+                </div>
+                <div class="card" style="max-width: 800px; margin: 10px;">
+                    <div class="card-header">
+                        Blog one heading/title
+                        <div class="float-right">
+                            <a href="#" class="btn btn-outline-info ">Edit</a>
+                            <a href="#" class="btn btn-outline-info ">Delete</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>The short description of the blog</p>
+                        <p>Date of creation: 12/12/2012 </p>
+                    </div>
+                </div>
+            </div>
+            <!-- add/edit blog/news .. opens up when a blog/news is selected in edit or when new item is selected-->
+            <div class="container blogs-container" style="display:block;">
+                <div class="card" style="max-width: 800px; margin: 10px;">
+                    <div class="card-header text-center">
+                        Add New Blog
+                    </div>
+                    <div class="card-body">
+                        <form id="blogs_news">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" placeholder="title" id="title">
+                            </div>
+                            <div class="form-group">
+                                <!-- default selected to today -->
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" id="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="short-header-text">Short Description</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="this happened because of this.." id="shortDescription"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="url-fragment">URL fragment</label>
+                                <!-- the input should be in url-ecceptable string format -->
+                                <input type="text" placeholder="the-main-cause-of-this-event" class="form-control" id="url">
+                            </div>
+                            <div class="form-group blog">
+                                <label for="blog">Blog</label>
+                                <!-- look here for detail https://summernote.org/getting-started/#for-bootstrap-4 -->
+                                <div id="summernote"></div>
+                            </div>
+                            <div class="form-group text-right">
+                                <button type="button" class="btn btn-info" onclick="btnWriteNews();">Save</button>
+                                <button type="button" class="btn btn-danger">Discard</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- gallery/banner image data insertion/updation to database after the file is uploaded to the directory. -->
+            <div class="container gallery-container" style="display: none;">
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header">
+                        New Gallery Item
+                    </div>
+                    <div class="card-body">
+                        <form action="">
+                            <div class="form-group">
+                                <label>name</label>
+                                <input type="text" class="form-control" placeholder="Name for image">
+                            </div>
+                            <div class="form-group">
+                                <label>Url</label>
+                                <input type="text" class="form-control" placeholder="Address for image">
+                            </div>
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-info">Add</button>
+                                <button type="button" class="btn btn-danger">Discard</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header">
+                        name
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2 d-flex flex-row">
+                            <input type="text" class="form-control m-2" value="vatsalya.com/assets/gallery/abcf.jpg">
+                            <a href="#" class="btn btn-outline-info m-2">Save</a>
+                            <a href="#" class="btn btn-outline-danger m-2">Remove</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header">
+                        name 2
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2 d-flex flex-row">
+                            <input type="text" class="form-control m-2" value="vatsalya.com/assets/gallery/abcf2.jpg">
+                            <a href="#" class="btn btn-outline-info m-2">Save</a>
+                            <a href="#" class="btn btn-outline-danger m-2">Remove</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- environment data  -->
+            <div class="container environment-container" style="display: none;">
+                <div class="card" style="max-width: 600px; margin: 10px;">
+                    <div class="card-header">
+                        Environment Data
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group form-check text-right">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">Edit</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactus-email">Contact Email Id</label>
+                            <input type="text" class="form-control" value="abcd@vatsalya.com.np">
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-email">Appointment Email Id</label>
+                            <input type="text" class="form-control" value="appointment@vatsalya.com.np">
+                        </div>
+                        <div class="form-group">
+                            <label for="elastic-mail-api">Elastic mail Api</label>
+                            <input type="text" class="form-control" value="f8937197-8d4e-4e88-f8937197-8d4e-4e88">
+                        </div>
+                        <div class="form-group">
+                            <label for="youtube-api">Youtube Api</label>
+                            <input type="text" class="form-control"
+                                value="AI0BhDy6kkADy6kkABAUw3PCbswRxsT7Xs80BhDy6kkA">
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-info" disabled>Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- directory listing -->
+            <div class="container directory-container" style="display: none;">
+                <div class="row">
+                    <div class="card border-success m-3" style="width: 200px; height: 200px;">
+                        <div class="card-body text-center m-auto" style="padding: 50px;">
+                            <button type="button" class="btn btn-outline-info"
+                                style=" border-radius: 50%; height: 100px; width: 100px;"> + </button>
+                        </div>
+                    </div>
+                    <div class="card border-success m-3" style="max-width: 14rem;">
+                        <div class="card-header border-success p-1 text-center">Name</div>
+                        <div class="card-body p-0">
+                            <img src="http://www.btwobconsulting.com/assets/images/blog-2.jpg" alt=""
+                                style="max-width: 100%; max-height: 100%;">
+                        </div>
+                        <div class="card-footer bg-transparent border-success p-0">
+                            <button type="button" class="btn btn-outline-info"
+                                style="height: 100%; width: 100%; border-radius: 0;"> Copy Url </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+    </script>
+
+    <!-- for summer note -->
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Start your blog here',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
+</body>
