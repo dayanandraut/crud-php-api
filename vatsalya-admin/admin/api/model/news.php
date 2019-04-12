@@ -74,6 +74,49 @@ class News{
         return false;
         
     }
+
+    // update news
+    function update(){
+ 
+        // update query
+        $query = "UPDATE " . $this->table_name . "
+                
+                SET
+                title=:title, date=:date, header=:header, url=:url, story=:story, author=:author 
+                WHERE    id = :id";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+     
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->title=htmlspecialchars(strip_tags($this->title));
+        $this->date=htmlspecialchars(strip_tags($this->date));
+        $this->header=htmlspecialchars(strip_tags($this->header));
+        $this->url=htmlspecialchars(strip_tags($this->url));
+        $this->story=htmlspecialchars($this->story);
+        $this->author=htmlspecialchars(strip_tags($this->author));
+    
+        // bind values
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":title", $this->title);
+        $stmt->bindParam(":date", $this->date);
+        $stmt->bindParam(":header", $this->header);
+        $stmt->bindParam(":url", $this->url);
+        $stmt->bindParam(":story", $this->story);
+        $stmt->bindParam(":author", $this->author);
+     
+        // execute the query
+        if($stmt->execute()){
+            $affected_rows = $stmt->rowCount();
+            if($affected_rows>=1)
+            return true;
+        }
+     
+        return false;
+    }
+
+
 }
 
 ?>
