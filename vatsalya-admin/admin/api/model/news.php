@@ -74,7 +74,7 @@ class News{
         return false;
         
     }
-
+//-----------------------------------------------------------------------
     // update news
     function update(){
  
@@ -114,6 +114,33 @@ class News{
         }
      
         return false;
+    }
+
+//------------------------------------------------------------------------------
+    // delete the product
+    function delete(){
+    
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+    
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+    
+        // execute query
+        if($stmt->execute()){
+            $affected_rows = $stmt->rowCount();
+            if($affected_rows>0) return 1; // deleted rows
+            return 0; // stmt was executed but no rows were deleted
+        }
+    
+        return -1; // stmt was not executed because of db problem
+        
     }
 
 
