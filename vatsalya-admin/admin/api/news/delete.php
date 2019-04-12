@@ -31,8 +31,8 @@ if($rows_affected==1|| $rows_affected==0){
     http_response_code(200);
  
     // tell the user
-    if($rows_affected==1)   echo json_encode(array("message" => "News was deleted."));
-    if($rows_affected==0)   echo json_encode(array("message" => "No such news was found."));
+    if($rows_affected==1)   echo json_encode(array("message" => "News is deleted."));
+    if($rows_affected==0)   echo json_encode(array("message" => "No such news is found."));
 }
 
  

@@ -30,14 +30,18 @@ $news->id = $data->id;
     $news->author = $data->author;
     $news->story = $data->story;
     $news->url = $data->url;
+
 // update the news
-if($news->update()){
+$update_status  = $news->update();
+if($update_status==1 || $update_status==0){
  
     // set response code - 200 ok
     http_response_code(200);
  
     // tell the user
-    echo json_encode(array("message" => "news was updated."));
+    if($update_status==1) echo json_encode(array("message" => "News is updated."));
+    if($update_status==0) echo json_encode(array("message" => "No such news is found."));
+
 }
  
 // if unable to update the news, tell the user

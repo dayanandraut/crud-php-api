@@ -109,11 +109,11 @@ class News{
         // execute the query
         if($stmt->execute()){
             $affected_rows = $stmt->rowCount();
-            if($affected_rows>=1)
-            return true;
+            if($affected_rows>0) return 1; // updated successfully
+            return 0; // executed but not updated
         }
      
-        return false;
+        return -1; // didn't execute
     }
 
 //------------------------------------------------------------------------------
