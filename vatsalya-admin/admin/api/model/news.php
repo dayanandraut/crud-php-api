@@ -143,6 +143,19 @@ class News{
         
     }
 
+//---------------------------------------------------------------
+//GET INDIVIDUAL NEWS BY ID
+    function readById($searchId){
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? ";
+        
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $searchId);
+        // execute query
+        $stmt->execute();
+        
+        return $stmt;
+    }
 
 }
 
