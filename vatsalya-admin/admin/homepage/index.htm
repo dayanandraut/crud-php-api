@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <!-- add/edit blog/news .. opens up when a blog/news is selected in edit or when new item is selected-->
-            <div class="container blogs-container" style="display:block;">
+            <div class="container blogs-container" style="display:none;">
                 <div class="card" style="max-width: 800px; margin: 10px;">
                     <div class="card-header text-center">
                         Add New Blog
@@ -242,13 +242,24 @@
             </div>
 
             <!-- directory listing -->
-            <div class="container directory-container" style="display: none;">
+            <div class="container directory-container" style="display: block;">
                 <div class="row">
                     <div class="card border-success m-3" style="width: 200px; height: 200px;">
                         <div class="card-body text-center m-auto" style="padding: 50px;">
                             <button type="button" class="btn btn-outline-info"
                                 style=" border-radius: 50%; height: 100px; width: 100px;"> + </button>
                         </div>
+
+                        <!-- Creating Form for uploading pic -->
+                        <div>
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                Select image to upload:
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                <input type="submit" value="Upload Image" name="submit" id = "btnFileUpload">
+                            </form>
+                        </div>
+                        <!-- End of form -->
+
                     </div>
                     <div class="card border-success m-3" style="max-width: 14rem;">
                         <div class="card-header border-success p-1 text-center">Name</div>

@@ -25,7 +25,7 @@ if(
     !empty($data->title) &&
     !empty($data->date) &&
     !empty($data->header) &&
-    !empty($data->author) &&
+    //!empty($data->author) &&
     !empty($data->story) &&
     !empty($data->url)
 ){
