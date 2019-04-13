@@ -13,6 +13,7 @@ class News{
     public $url;
     public $story;
     public $author;
+    public $thumbnail_image_url;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -41,10 +42,11 @@ class News{
     function create(){
     
         // query to insert record
+        
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    title=:title, date=:date, header=:header, url=:url, story=:story, author=:author";
+                    title=:title, date=:date, header=:header, url=:url, story=:story, author=:author, thumbnail_image_url=:thumbnail_image_url";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -54,8 +56,10 @@ class News{
         $this->date=htmlspecialchars(strip_tags($this->date));
         $this->header=htmlspecialchars(strip_tags($this->header));
         $this->url=htmlspecialchars(strip_tags($this->url));
-        $this->story=htmlspecialchars($this->story);
+        //$this->story=$this->story;
         $this->author=htmlspecialchars(strip_tags($this->author));
+        //$this->thumbnail_image_url=$this->thumbnail_image_url;
+
     
         // bind values
         $stmt->bindParam(":title", $this->title);
@@ -64,6 +68,8 @@ class News{
         $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":story", $this->story);
         $stmt->bindParam(":author", $this->author);
+        $stmt->bindParam(":thumbnail_image_url", $this->thumbnail_image_url);
+
 
     
         // execute query
@@ -82,7 +88,7 @@ class News{
         $query = "UPDATE " . $this->table_name . "
                 
                 SET
-                title=:title, date=:date, header=:header, url=:url, story=:story, author=:author 
+                title=:title, date=:date, header=:header, url=:url, story=:story, author=:author, thumbnail_image_url=:thumbnail_image_url
                 WHERE    id = :id";
      
         // prepare query statement
@@ -94,7 +100,7 @@ class News{
         $this->date=htmlspecialchars(strip_tags($this->date));
         $this->header=htmlspecialchars(strip_tags($this->header));
         $this->url=htmlspecialchars(strip_tags($this->url));
-        $this->story=htmlspecialchars($this->story);
+        //$this->story=htmlspecialchars($this->story);
         $this->author=htmlspecialchars(strip_tags($this->author));
     
         // bind values
@@ -105,7 +111,8 @@ class News{
         $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":story", $this->story);
         $stmt->bindParam(":author", $this->author);
-     
+        $stmt->bindParam(":thumbnail_image_url", $this->thumbnail_image_url);
+        
         // execute the query
         if($stmt->execute()){
             $affected_rows = $stmt->rowCount();

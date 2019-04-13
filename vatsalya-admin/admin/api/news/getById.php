@@ -50,7 +50,8 @@ else{
                     "header" => $header,
                     "url" => $url,
                     "story" => $story,
-                    "author" => $author
+                    "author" => $author,
+                    "thumbnail_image_url" => $thumbnail_image_url
                 );
         
             // set response code - 200 OK

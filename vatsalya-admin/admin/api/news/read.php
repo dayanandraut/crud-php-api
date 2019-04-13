@@ -41,7 +41,8 @@ if($num>0){
             "header" => $header,
             "url" => $url,
             "story" => $story,
-            "author" => $author
+            "author" => $author,
+            "thumbnail_image_url" => $thumbnail_image_url
         );
  
         //array_push($news_arr["records"], $news_item);

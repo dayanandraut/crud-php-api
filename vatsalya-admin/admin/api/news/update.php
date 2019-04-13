@@ -30,6 +30,7 @@ $news->id = $data->id;
     $news->author = $data->author;
     $news->story = $data->story;
     $news->url = $data->url;
+    $news->thumbnail_image_url = $data->thumbnail_image_url;
 
 // update the news
 $update_status  = $news->update();

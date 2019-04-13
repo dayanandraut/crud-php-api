@@ -38,7 +38,7 @@ if(
     $news->story = $data->story;
     $news->url = $data->url;
    // $news->created = date('Y-m-d H:i:s');
- 
+   $news->thumbnail_image_url = $data->thumbnail_image_url;
     // create the news
     if($news->create()){
  
@@ -46,7 +46,7 @@ if(
         http_response_code(201);
  
         // tell the user
-        echo json_encode(array("message" => "news was created successfully."));
+        echo json_encode(array("message" => "News is created successfully."));
     }
  
     // if unable to create the news, tell the user
