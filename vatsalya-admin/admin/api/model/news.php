@@ -124,7 +124,7 @@ class News{
     }
 
 //------------------------------------------------------------------------------
-    // delete the product
+    // delete the news
     function delete(){
     
         // delete query
