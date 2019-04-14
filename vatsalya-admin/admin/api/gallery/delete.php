@@ -11,7 +11,11 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $dir = "../../homepage/gallery";
 
 // get file name here
-$file = $dir . "/gori.jpg";
+$data = json_decode(file_get_contents("php://input"));
+ 
+// set filename be deleted
+$fname = $data->filename;
+$file = $dir . "/". $fname;
 if (!unlink($file))
   {
     http_response_code(400);

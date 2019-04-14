@@ -25,7 +25,7 @@ $news->id = $data->id;
  
 // delete the news
 $rows_affected  = $news->delete();
-if($rows_affected==1|| $rows_affected==0){
+if($rows_affected==1|| $rows_affected==0){    
  
     // set response code - 200 ok
     http_response_code(200);
