@@ -3,9 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
 // get directory here
-$dir = "../../homepage/gallery";
+$dir = "../../homepage/publication";
 chdir ($dir);
 
 $current_dir = getCwd();
