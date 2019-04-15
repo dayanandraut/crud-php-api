@@ -164,6 +164,20 @@ class News{
         return $stmt;
     }
 
+//---------------------------------------------------------------
+//GET INDIVIDUAL NEWS BY ID
+function readByUrl($url){
+    $query = "SELECT * FROM " . $this->table_name . " WHERE url like ? ";
+    
+    
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(1, $url);
+    // execute query
+    $stmt->execute();
+    
+    return $stmt;
+}
+
 }
 
 ?>

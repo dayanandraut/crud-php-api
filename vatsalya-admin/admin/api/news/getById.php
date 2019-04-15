@@ -14,7 +14,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$news = new news($db);
+$news = new News($db);
 
 // check parameter is set or not. If not, send bad request
 if(!isset($_GET['id'])){
@@ -22,7 +22,7 @@ if(!isset($_GET['id'])){
  
     // tell the user no news found
     echo json_encode(
-        array("message" => "Provide id of the news")
+        array()
     );
 }
 
@@ -73,7 +73,7 @@ else{
         
             // tell the user no news found
             echo json_encode(
-                array("message" => "No such news is found.")
+                array()
             );
         }
 }
