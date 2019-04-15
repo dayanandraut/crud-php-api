@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../model/news.php';
+include_once '../model/gallery.php';
 
 // instantiate database and news object
 $database = new Database();
