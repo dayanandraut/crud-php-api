@@ -90,6 +90,40 @@ class Gallery{
         return -1; // stmt was not executed because of db problem
         
     }
+
+    //-----------------------------------------------------------------------
+    // update gallery
+    function update(){
+ 
+        // update query
+        $query = "UPDATE " . $this->table_name . "
+                
+                SET
+                image_name=:image_name, image_url=:image_url
+                WHERE    id = :id";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+     
+        
+    
+        // bind values
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":image_name", $this->image_name);
+        $stmt->bindParam(":image_url", $this->image_url);
+        
+        
+        // execute the query
+        if($stmt->execute()){
+            $affected_rows = $stmt->rowCount();
+            if($affected_rows>0) return 1; // updated successfully
+            return 0; // executed but not updated
+        }
+     
+        return -1; // didn't execute
+    }
+
+//------------------------------------------------------------------------------
 }
 
 
