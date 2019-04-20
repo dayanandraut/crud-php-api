@@ -42,10 +42,10 @@ if($_FILES['file']){
     if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
         $message = " File uploaded successfully";
         $uploadOk = 1;
-        echo json_encode(array(
-            'result' => 'success',
-            'status' => true,
-        ));
+        // echo json_encode(array(
+        //     'result' => 'success',
+        //     'status' => true,
+        // ));
     }
 
     if($uploadOk==1){
