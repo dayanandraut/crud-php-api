@@ -5,12 +5,10 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
- //$data = json_decode(file_get_contents("php://input"));
-// print_r($data);
+
 $uploadOk = 1;
 $message = "";
-//$name = $_POST['name'];
-//$_FILES['file'] = $data->files[0];
+
 if($_FILES['file']){
     $path = 'gallery/';
     if (!file_exists($path)) {
@@ -25,6 +23,7 @@ if($_FILES['file']){
         $message = $message. " file already exists.";
         $uploadOk = 0;
     }
+
     // Allow certain file formats
     if($ext != ".jpg" && $ext != ".png" && $ext != ".jpeg"
     && $ext != ".gif" ) {
@@ -37,24 +36,24 @@ if($_FILES['file']){
         $message = $message." file is should be less than 2MB";
         $uploadOk = 0;
     }
-    // $t=time();
-    // $generatedName = md5($t.$originalName).$ext;
+    
     $filePath = $path.$originalName;
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
-        $message = " File uploaded successfully";
-        $uploadOk = 1;
-       
-    }
 
+    // No errors till now
     if($uploadOk==1){
-        //success
-        http_response_code(200);
-        echo json_encode(array(
-            'result' => 'success',
-            'status' => true,
-            'message' => $message
-        ));
-    }else{
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+            $message = " File uploaded successfully";
+            $uploadOk = 1;
+            //success
+            http_response_code(200);
+            echo json_encode(array(
+                'result' => 'success',
+                'status' => true,
+                'message' => $message
+            ));            
+        } 
+    } 
+   else{
         //error
         http_response_code(500);
         echo json_encode(array(
