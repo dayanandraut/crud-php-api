@@ -19,49 +19,27 @@ $publication = new Publication($db);
 // query publication
 $stmt = $publication->read();
 $num = $stmt->rowCount();
- 
+// publication array
+$publication_arr=array();
 // check if more than 0 record found
 if($num>0){
- 
-    // publication array
-    $publication_arr=array();
-    //$publication_arr["records"]=array();
- 
-    // retrieve our table contents
+     // retrieve our table contents
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         // extract row
         // this will make $row['name'] to
         // just $name only
-        extract($row);
- 
+        extract($row); 
         $publication_item=array(
             "id" => $id,
             "publication_name" => $publication_name,
             "publication_url" => $publication_url
         );
- 
-        //array_push($publication_arr["records"], $publication_item);
         array_push($publication_arr, $publication_item);
-
     }
- 
-    // set response code - 200 OK
-    http_response_code(200);
- 
-    // show publication data in json format
-    echo json_encode($publication_arr);
 }
+// set response code - 200 OK
+http_response_code(200);
  
-
-else{
- 
-    // set response code - 404 Not found
-    http_response_code(404);
- 
-    
-    echo json_encode(
-        array()
-    );
-}
-
+// show publication data in json format
+echo json_encode($publication_arr);
 ?>

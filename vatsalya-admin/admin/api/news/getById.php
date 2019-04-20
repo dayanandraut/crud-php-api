@@ -20,9 +20,8 @@ $news = new News($db);
 if(!isset($_GET['id'])){
     http_response_code(400);
  
-    // tell the user no news found
     echo json_encode(
-        array()
+        array("message"=>"Bad Request")
     );
 }
 
@@ -60,18 +59,13 @@ else{
             // show news data in json format
             echo json_encode($news_item);
 
-            }
-        
+            }   
+
+        // no records found    
+        else{       
             
-
+            http_response_code(200);
         
-
-        else{
-        
-            // set response code - 404 Not found
-            http_response_code(404);
-        
-            // tell the user no news found
             echo json_encode(
                 array()
             );

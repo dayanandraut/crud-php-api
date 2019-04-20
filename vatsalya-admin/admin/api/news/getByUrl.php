@@ -55,7 +55,7 @@ if(!empty($data->url)) {
                 "thumbnail_image_url" => $thumbnail_image_url
             );
     
-            //array_push($news_arr["records"], $news_item);
+            
             array_push($news_arr, $news_item);
 
         }
@@ -68,24 +68,25 @@ if(!empty($data->url)) {
     }
     
 
+    // no records were found
     else{
-    
-        // set response code - 404 Not found
-        http_response_code(404);
-    
-        // tell the user no products found. Send empty array
+        
+        http_response_code(200);    
+        // Send empty array
         echo json_encode(
             array()
         );
     }
 }
+
+// Bad Request
 else{
-    // set response code - 404 Bad Request
+    // set response code - 400 Bad Request
     http_response_code(400);
  
     // tell the user no products found. Send empty array
     echo json_encode(
-        array()
+        array("message"=>"Bad Request")
     );
 }
 
