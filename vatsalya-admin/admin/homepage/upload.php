@@ -5,17 +5,18 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// $data = json_decode(file_get_contents("php://input"));
+ $data = json_decode(file_get_contents("php://input"));
 // print_r($data);
 $uploadOk = 1;
 $message = "";
 //$name = $_POST['name'];
-if($_FILES['file']){
+$recieved_file = $data->files[0];
+if($recieved_file){
     $path = 'gallery/';
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
     }
-    $originalName = $_FILES['file']['name'];
+    $originalName = $recieved_file['name'];
     $ext = strtolower('.'.pathinfo($originalName, PATHINFO_EXTENSION));
 
     // Check if file already exists
@@ -39,7 +40,7 @@ if($_FILES['file']){
     // $t=time();
     // $generatedName = md5($t.$originalName).$ext;
     $filePath = $path.$originalName;
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+    if (move_uploaded_file($recieved_file['tmp_name'], $filePath)) {
         $message = " File uploaded successfully";
         $uploadOk = 1;
         // echo json_encode(array(
